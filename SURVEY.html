@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>SURVEY</title>
+    <style>
+        /* CSS styles */
+    </style>
+</head>
+<body bgcolor="#FDD7E4" align="center">
+    <h1 align="center">SURVEY</h1>
+    <form name="survey" id="surveyForm">
+        <p>Full name:<br><br><input type="text" name="no1" id="no1" size="30"></p>
+        <p>Age<br><br><input type="text" size="30" name="no2" id="no2"></p>
+        <p>Section<br><br><input type="text" name="no3" id="no3"></p>
+        <p>1. How is your experience as a scielinian?<br><br><input type="text" size="30" name="no4" id="no4"></p>
+        <p>2. As a student with the subject ict, do you find it hard or fun?<br><br><input type="text" size="30" name="no5" id="no5"></p>
+        <p>3. Do you find it hard? (Yes or no)<br><input type="radio" size="30" name="no6" id="no6" value="Yes">Yes<Input type="radio" name="no6" value="No">No</p>
+        <p>4. About the catch-up friday, do you find it necessary? (Yes or no)<br><br><input type="radio" size="30" name="no7" id="no7" value="Yes">Yes<Input type="radio" name="no7" value="No">No</p>
+        <p>Which quarter do you find the easiest?<br><br><input type="text" size="30" name="no8" id="no8"></p>
+        <p>Which subject increases your creativity the most?<br><br><input type="text" size="30" name="no9" id="no9"></p>
+        <p> As a student with the subject ict, do you find it stressful or fun?<br><br><input type="text" size="30" name="no10" id="no10"></p>
+        <input type="submit" value="submit">
+    </form>
+    <div id="responses"></div>
+
+<script>
+        document.getElementById('surveyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var formData = {
+                "Full name":document.getElementById("no1").value,
+                "Age": document.getElementById("no2").value,
+                "Section": document.getElementById("no3").value,
+                "Q1": document.getElementById("no4").value,
+                "Q2": document.getElementById("no5").value,
+                "Q3": document.getElementById("no6").value,
+                "Q4": document.getElementById("no7").value,
+                "Q5": document.getElementById("no8").value,
+                "Q6": document.getElementById("no9").value,
+                "Q7": document.getElementById("no10").value
+            };
+
+            // Storing form data in localStorage
+            for (var key in formData) {
+                localStorage.setItem(key, formData[key]);
+            }
+You sent
+// Displaying the responses
+            var responseHtml = "<h2>Survey Responses</h2>";
+            for (var key in formData) {
+                responseHtml += "<p><strong>" + key + ":</strong> " + formData[key] + "</p>";
+            }
+            document.getElementById("responses").innerHTML = responseHtml;
+
+            alert('Your Response is submitted successfully!');
+        });
+    </script>
+</body>
+</html>
